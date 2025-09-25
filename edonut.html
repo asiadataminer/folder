@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>条形图</title>
+    <script src='js/echarts.js'></script>
+	<script src="data/pie.json"></script>
+ <style>
+      #viz {
+  height: 400px;
+  width: 500px;
+    </style>
+	 </head>
+  <body>
+  <div id='viz'></div>
+    <script>
+var chartDom = document.getElementById('viz');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  title: {
+    text: '各人种病人比例',
+    left: 'center'
+  },
+    tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+   orient: 'vertical',
+   top: '20%',
+   left: 'right'
+  },
+  series: [
+    {
+       name: 'Access From',
+      type: 'pie',
+	  top: '10%',
+      radius: ['50%', '100%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '30',
+          fontWeight: 'bold'
+        }
+      },
+     
+      data: mydata,
+      
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+</script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/index.css">
+<style>
+
+.gridL {
+  display: grid;
+  width:26%; 
+  float:left;
+  grid-auto-rows:330px 320px 320px;
+  grid-gap: 1px;
+  padding: 5px;
+    height: 0px;
+    /*padding-bottom: 0px;*/
+}
+.gridL > iframe {
+width: 100%;
+height: 90%;
+margin-top: 5px;
+/*margin-bottom: 20px;*/
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border-radius: 12px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 14px #000;
+} 
+
+.gridM {
+  display: grid;
+   width:45%;
+  float:left;
+   grid-auto-rows:485px 45px 485px;
+  grid-gap: 1px;
+  padding: 5px;
+}
+.gridM  iframe {
+  width: 100%;
+height: 85%;
+margin-top: 5px;
+margin-bottom: 2px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 30px;
+}
+#car1{
+    height: 450px;
+    margin-top: -57px;
+}
+
+.gridR {
+  display: grid;
+  width:26%;
+  float:left;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  grid-auto-rows:505px 45px 515px;
+  grid-gap: 1px;
+  padding: 5px;
+    height: 0px;
+}
+
+
+
+.gridR > iframe {
+width: 100%;
+height: 80%;
+/*height: 305px;*/
+margin-top: 5px;
+/*margin-bottom: 20px;*/
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border-radius: 12px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 14px #000;
+} 
+#demo{
+    margin-left: 300px;
+    font-size:20px;
+    height:300px;
+    /*color: rgba(55, 55, 255, 1.0);*/
+    color: pink;
+}
+</style>
+<script src="js/company.js"></script>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=Ilovelady99"></script>
+</head>
+<body style="position: relative;padding-top: 4px">
+<div class="gridL" id="grid1">
+ <iframe id="dist1" src="chinaStyleL1_jia.html"  ></iframe>
+<iframe id="dist2" src="chinaStyleR3_jia.html" style="margin-top: -26px;" ></iframe>
+<iframe id="dist3" src="chinaStyleL3_jia.html" style="margin-top: -56px;" ></iframe>
+</div>
+
+ <div class="gridM"  id="grid2">
+  <iframe id="car" src="index1_jia.html"  ></iframe>
+<!--  <div id="demo">驻马店市地图</div>-->
+ <iframe id="car1" src="驻马店_jia.html"  ></iframe>
+  </div>
+<div class="gridR"  id="grid3">
+    <iframe id="ss" src="河南省GDP%20DATA_jia.html"  ></iframe>
+<!-- 	<iframe id="tt" src="pie_jia.html" width: 438px;height: 377px; style="margin-top: -56px;" ></iframe>-->
+    <iframe id="tt" src="pie_jia.html" style="position: absolute;top: 427px;width: 25.5%;height: 450px;padding-left: 58px" ></iframe>
+  </div>
+ 
+<script type="text/javascript">
+    var map = new AMap.Map("container", {
+        viewMode: '3D',
+        zoom: 12,
+        center: [113.55,22.245],
+        resizeEnable: true
+    });
+
+    // 创建纯文本标记
+for (var i = 0; i < points.length; i += 1) {
+var text3=new AMap.Text({
+        text: officeAd[i]['name']+":"+nums[i]['number'],
+        anchor:'center', // 设置文本标记锚点
+        draggable:true,
+        cursor:'pointer',
+        style:{
+             'padding': '10px 10px',
+            'margin-bottom': '1px',
+			'border-radius': '.25rem',
+            'width': '120px',
+			'height':'10px',
+            'border-width': 0,          
+            'text-align': 'center',
+            'font-size': '10px',
+            'color': 'black',
+			'-moz-box-shadow': '4px 4px 14px #000',
+            '-webkit-box-shadow': '4px 4px 14px #000',
+            'box-shadow': '4px 4px 14px #000',
+        },
+        position: points[i]['lnglat'],
+    });
+
+text3.setMap(map);
+}
+</script>
+</body>
+</html>

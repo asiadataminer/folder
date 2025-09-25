@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1维分布图</title>
+    <script src="js/d3plus-aplot.v0.9.full.min.js"></script>
+   <style>
+      body {
+        overflow: hidden;
+        margin-bottom: 24px;
+        margin-top: 0px;
+        /*height: 100%;*/
+        /*box-sizing: border-box;*/
+      }
+	   #viz {
+  height: 80%;
+  width: 100%;
+}
+      #demo{
+        margin-left: 51px;
+        font-size:20px;
+        height:15%;
+        /*margin-bottom: 0px;*/
+        /*color: rgba(55, 55, 255, 1.0);*/
+        color: pink;
+      }
+   </style>
+  </head>
+  <body>
+  <p id="demo">2020年驻马店市各县人口总量</p>
+    <div id="viz"></div>
+    <script>
+          var myData = [
+{"name":"西平县","pop":647311},
+{"name":"上蔡县","pop":1005745},
+{"name":"平舆县","pop":728672},
+{"name":"正阳县","pop":625123},
+{"name":"确山县","pop":403044},
+{"name":"泌阳县","pop":695239},
+{"name":"汝南县","pop":612551},
+{"name":"遂平县","pop":441370},
+{"name":"新蔡县","pop":823829},
+      ]; 
+       new d3plus.BarChart()
+        .config({
+          data: myData,
+          groupBy: "name",
+		  select: "#viz",
+          x: "name",
+          y: "pop",
+		   label: d => `${d['pop']}`,	
+          legend: false
+        })
+        .render();
+    </script>
+  </body>
+</html>

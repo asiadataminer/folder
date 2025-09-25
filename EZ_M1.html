@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  display: block;
+  margin: auto;
+}
+
+.node circle {
+  fill: #BCED91;
+  stroke: #458B00;
+  stroke-width: 2.5px;
+}
+
+.node {
+  font-family: verdana, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  fill: #6B4226;
+}
+
+.link {
+  fill: none;
+  stroke: #BFBFBF;
+  stroke-width: 2px;
+}
+
+</style>
+<body>
+<body><p id="demo" style="font-size:20px; height:15%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">家庭基本情况层次图</p>
+<!-- <h3 style="text-align:center">家庭基本情况层次图</h3> -->
+<script src="js/d3.v3.min.js"></script>
+<script>
+
+var root = {"name" : "家庭基本情况", "children" : [
+                    {"name" : "人均可支配收入", "children" : [
+			    {"name" : "工资性收入"},
+			    {"name" : "经营净收入"},
+			    {"name" : "财产净收入"},
+				{"name" : "转移净收入"}
+		    ] },
+		    {"name" : "转移净收入", "children" : [
+			    {"name" : "食品烟酒"},
+			    {"name" : "衣着"},
+			    {"name" : "居住"},
+				{"name" : "生活用品及服务"},
+				{"name" : "交通通信"},
+				{"name" : "教育文化娱乐"},
+				{"name" : "医疗保健"},
+				{"name" : "其他用品和服务"},
+		    ] },
+                    {"name" : "平均每户家庭人口"},
+                    {"name" : "平均每户就业人口"}                    
+                ]};
+
+
+var diameter = 600;
+
+var tree = d3.layout.tree()
+    .size([360, diameter / 3 - 130])
+    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+var diagonal = d3.svg.diagonal.radial()
+    .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter )
+    .attr("height", diameter/2.2 - 20)
+  .append("g")
+    .attr("transform", "translate(" + diameter / 2 + "," + (diameter / 4-12) + ")");
+
+  var nodes = tree.nodes(root),
+      links = tree.links(nodes);
+
+  var link = svg.selectAll(".link")
+      .data(links)
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", diagonal);
+
+  var node = svg.selectAll(".node")
+      .data(nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+
+  node.append("circle")
+      .attr("r", 5);
+
+  node.append("text")
+      .attr("dy", ".31em")
+      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+      .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+      .text(function(d) { return d.name; });
+
+d3.select(self.frameElement).style("height", diameter - 150 + "px");
+
+</script>
+</body>
+</html>

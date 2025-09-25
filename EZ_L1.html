@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Stacked Area Chart | D3plus</title>
+
+    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+
+    <style>
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+<div id="demo" style="font-size:20px; height:20px; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">社会消费品零售总额</div>
+    <script>
+
+
+      var data = [
+         {id: "批发零售业", x: 2017, y:  1344825.7005912},
+   {id: "批发零售业", x: 2018, y: 1625620.4391766},
+   {id: "批发零售业", x: 2019, y: 1471964.1870484},
+   {id: "住宿餐饮业",  x: 2017, y: 1333699.04788062},
+   {id: "住宿餐饮业",  x: 2018, y:  1608397.80930237},
+   {id: "住宿餐饮业",  x: 2019, y: 1418887.81295161}
+
+      ];
+
+      new d3plus.StackedArea()
+        .data(data)
+        .groupBy("id")
+        .render();
+
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>地图</title>
+<script type="text/javascript" src="js/d3.v5.min.js"></script>
+<script src="js/d3-geo-projection.v2.min.js"></script>
+<script src="js/d3-scale-chromatic.v1.min.js"></script>
+<script src="js/d3plus-hierarchy.v0.9.full.min.js"></script>
+<script src="data/440900_full.js"></script>
+<script src="data/zhuPop1.js"></script>
+<link rel="stylesheet" type="text/css" href="js/map.css">
+<style>
+ body {
+        margin: 0;
+        overflow: hidden;
+		
+      }
+</style>
+</head>
+<p id="demo" style="font-size:20px;margin-top:0px; height:15%;text-align: center;">茂名地区人口分布</p>
+<body>
+    <div id="container" class="svg-container"></div>
+    <script type="text/javascript">
+    var w = 1000;
+    var h = 2000;
+    var h = 3000;
+    var svg = d3.select("div#container").append("svg").attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .classed("svg-content", true);
+  // 装载数据 
+var mymap = geodata;
+  // 设置颜色
+var colorScale = d3.scaleThreshold()
+   .domain([1000000, 1150000,1300000, 1450000,1600000])
+   .range(["#96FED1","#0080FF","#0000E3","#8600FF"]);	
+    var projection = d3.geoMercator()
+	                .translate([w/2, h/2])
+					.scale(20000).center([110.99,18.7]);			
+    var path = d3.geoPath().projection(projection);
+
+
+Promise.all([mymap, pop]).then(function(values){    
+// 画地图填色
+    svg.selectAll("path")
+        .data(values[0].features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("fill", function (d) {
+        d.total = pop[d.properties["adcode"]] || 0;
+        return colorScale( d.total);
+      })
+      .style("stroke", "black")
+           .style("opacity", .8)  ;
+//填入地名
+svg.selectAll("text")
+  .data(values[0].features)
+  .enter()
+  .append("text")
+  .text(function(d, i) {
+    return d.properties.name;
+}).transition().duration(2000)
+.attr("x", function(d) {return projection(d.properties.centroid)[0]})
+.attr("y", function(d) {return projection(d.properties.centroid)[1] });
+//填入作者地址
+svg.append("text")
+.text("水果之乡欢迎您！").transition()
+            .style("font-size","28px").delay(2000).duration(2000)
+.attr("x", projection([111.75,22.59])[0])
+.attr("y", projection([111.75,22.59])[1])
+;
+
+// 创建图例，创建列表
+var keys = ["1000000-1150000", "1150000-1300000", "1300000-1450000", "1450000-1600000"]
+svg.selectAll("mydots")
+  .data(keys)
+  .enter()
+  .append("circle")
+    .attr("cx", 60)
+    .attr("cy", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("r", 7)
+    .style("fill", function(d,i){ return colorScale(900000+i*150000)});
+svg.selectAll("mylabels")
+  .data(keys)
+  .enter()
+  .append("text")
+    .attr("x", 80)
+    .attr("y", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .style("fill", function(d,i){ return colorScale(900000+i*150000)})
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle");
+ });
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1维分布图</title>
+    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+   <style>
+      body {
+       margin: 0;
+        overflow: hidden;
+      }
+	   #viz {
+  height: 80%;
+  width: 100%;
+}    </style>
+  </head>
+  <body>
+  <p id="demo" style="font-size:20px; height:25px; color: rgba(55, 55, 255, 1.0); background-color: rgba(245,222,179);">关于广州咨询常见问题一览</p>
+    <div id="viz"></div>
+    <script>
+          var myData = [
+{"name":"去哪里玩","pop":112},
+{"name":"有什么好吃的","pop":170},
+{"name":"就业环境如何","pop":50},
+{"name":"必去景点","pop":20},
+{"name":"该怎么计划游玩 ","pop":19},
+{"name":"其它","pop":15},
+      ]; 
+       new d3plus.BarChart()
+        .config({
+          data: myData,
+          groupBy: "name",
+		  select: "#viz",
+          x: "name",
+          y: "pop",
+          legend: false
+        })
+        .render();
+    </script>
+  </body>
+</html>

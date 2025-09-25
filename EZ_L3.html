@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1维分布图</title>
+    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+   <style>
+      body {
+       margin: 0;
+        overflow: hidden;
+      }
+	   #viz {
+  height: 80%;
+  width: 100%;
+}    </style>
+  </head>
+  <body>
+  <p id="demo" style="font-size:20px; height:15%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">各类学校平均毕业人数</p>
+    <div id="viz"></div>
+    <script>
+
+	  var myData = [
+  {"name": "高等学校",  "Pop":  15149/5},
+  {"name": "中等职教",  "Pop": 2110/2},
+  {"name": "技工学校",  "Pop":  2622},
+  {"name": "普通中学", "Pop": 52246/105},
+  {"name": "职业中学",  "Pop": 5292/5},
+
+];
+       new d3plus.BarChart()
+        .config({
+          data: myData,
+          groupBy: "name",
+		  select: "#viz",
+          x: "name",
+          y: "Pop",
+          legend: false
+        })
+        .render();
+    </script>
+  </body>
+</html>

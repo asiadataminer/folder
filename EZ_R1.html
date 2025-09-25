@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+<style> 
+  .odd{background-color: white;} 
+  .even{background-color: rgba(200, 200, 255, 1.0);} 
+</style>
+
+</head>
+<body>
+<div id="demo" style="font-size:20px; height:30px; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">医院地址</div>
+<table id="theTable"> 
+
+<tr><td>医院</td><td>地址</td></tr> 
+
+<tr><td>中山市人民医院</td><td>孙文东路2号</td></tr>
+<tr><td>中山市中医院</td><td>西区康欣路3号</td></tr>
+<tr><td>中山市博爱医院</td><td>东区街道城桂路6号</td></tr>
+<tr><td>中山市小榄人民医院</td><td>小榄镇菊城大道中段65号</td></tr>
+<tr><td>中山市第二人民医院</td><td>港口镇木河迳东路</td></tr>
+
+
+
+</table>
+<script>
+   if(document.getElementsByTagName){  
+    var table = document.getElementById("theTable");   
+    var rows = table.getElementsByTagName("tr");   
+    for(i = 0; i < rows.length; i++){           
+  //manipulate rows 
+      if(i % 2 == 0){ 
+        rows[i].className = "even"; 
+      }else{ 
+        rows[i].className = "odd"; 
+      }       
+    } 
+  } 
+
+</script>
+</body>
+</html>

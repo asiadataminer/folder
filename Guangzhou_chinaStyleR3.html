@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1维分布图</title>
+    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+   <style>
+      body {
+       margin: 0;
+        overflow: hidden;
+      }
+	   #viz {
+  height: 80%;
+  width: 100%;
+}    </style>
+  </head>
+  <body>
+  <p id="demo" style="font-size:20px; height:15%; color: rgba(55, 55, 255, 1.0); background-color: rgba(245,222,179);">广州上市公司市值(亿元)</p>
+    <div id="viz"></div>
+    <script>
+          var myData = [
+{"name":"小鹏汽车","pop":2839.88},
+{"name":"保利地产","pop":2060.82},
+{"name":"恒大汽车","pop":1792.03},
+{"name":"分众传媒","pop":1423.75},
+{"name":"广汽集团","pop":1194.55},
+{"name":"广发证券","pop":1158.41},
+{"name":"唯品会","pop":1137.95},
+{"name":"海大集团","pop":919.89},
+{"name":"南方航空","pop":869.11},
+{"name":"欧派家居","pop":760.83},
+      ]; 
+       new d3plus.BarChart()
+        .config({
+          data: myData,
+          groupBy: "name",
+		  select: "#viz",
+          x: "name",
+          y: "pop",
+          legend: false
+        })
+        .render();
+    </script>
+  </body>
+</html>

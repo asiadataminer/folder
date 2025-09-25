@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多时间序列</title>
+    <script src="js/d3plus-aplot.v0.9.full.min.js"></script>
+    <style>
+	  /*color:white;*/
+      body {
+        margin: 0;
+        overflow: hidden;
+          /*margin-top: 19px;*/
+      }
+	    #viz {
+  height: 75%;
+  width: 100%;
+            margin-top: 15px;
+  }
+        #d3plus-textBox-eace3f_1_0 text{
+            fill: white;
+        }
+        #d3plus-textBox-b22200_1_0 text{
+            fill: white;
+        }
+        #d3plus-textBox-b35c1e_1_0 text{
+            fill: white;
+        }
+        #d3plus-textBox-282f6b_1_0 text{
+            fill: white;
+        }
+        g[aria-label="河南大学."] path{
+            stroke: #87CEFA;
+        }
+        #demo{
+            font-size:20px;
+            height:30px;
+            /*color: rgba(55, 55, 255, 1.0);*/
+            color: pink;
+            text-align: center;
+        }
+        rect[aria-label="河南大学"]{
+            fill: #87CEFA;
+        }
+    </style>
+  </head>
+<div id="demo">河南省大学近年毕业人数</div>
+    <div id="viz";></div>
+    <script>
+         var myData = [
+		 {id: "郑州大学", y: 12003,  x: "2015"},
+		 {id: "河南大学", y: 11125,  x: "2015"},
+		 {id: "河南理工大学", y: 8897,  x: "2015"},
+		 {id: "河南农业大学", y: 8436,  x: "2015"},
+         {id: "郑州大学", y: 12661,  x: "2016"},
+		 {id: "河南大学", y: 10863,  x: "2016"},
+		 {id: "河南理工大学", y: 8813,  x: "2016"},
+		 {id: "河南农业大学", y: 9143,  x: "2016"},
+		 {id: "郑州大学", y: 11647,  x: "2017"},
+		 {id: "河南大学", y: 11563,  x: "2017"},
+		 {id: "河南理工大学", y: 8977,  x: "2017"},
+		 {id: "河南农业大学", y: 8723,  x: "2017"},
+		 {id: "郑州大学", y: 13126,  x: "2018"},
+		 {id: "河南大学", y: 12360,  x: "2018"},
+		 {id: "河南理工大学", y: 10125,  x: "2018"},
+		 {id: "河南农业大学", y: 8402,  x: "2018"},
+		 {id: "郑州大学", y: 12559,  x: "2019"},
+		 {id: "河南大学", y: 11203,  x: "2019"},
+		 {id: "河南理工大学", y: 8836,  x: "2019"},
+		 {id: "河南农业大学", y: 8802,  x: "2019"},
+		 {id: "郑州大学", y: 12778,  x: "2020"},
+		 {id: "河南大学", y: 11755,  x: "2020"},
+		 {id: "河南理工大学", y: 8935,  x: "2020"},
+		 {id: "河南农业大学", y: 8608,  x: "2020"}
+        ];   
+      new d3plus.LinePlot()
+        .config({
+          data: myData,
+		  select: "#viz",
+          groupBy: "id",
+         })
+        .render();
+
+
+
+    </script>
+
+  </body>
+
+</html>

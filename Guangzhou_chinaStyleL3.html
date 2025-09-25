@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多时间序列</title>
+    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hid:den;
+      }
+	    #viz {
+  height: 75%;
+  width: 100%;
+  }
+    </style>
+  </head>
+  <body><p id="demo" style="font-size:20px; height:30px; color: rgba(55, 55, 255, 1.0); background-color: rgba(245,222,179);">各行业各年增加值</p>
+    <div id="viz"></div>
+    <script>
+         var myData = [
+		 {id: "第二产业", y: 66579909,  x: "2013"},
+		 {id: "第三产业", y: 83151073,  x: "2013"},
+		 {id: "第一产业", y: 6350400,  x: "2013"},
+         {id: "第二产业", y: 72242462,  x: "2014"},
+		 {id: "第三产业", y: 92194729,  x: "2014"},
+		 {id: "第一产业", y: 5757900,  x: "2014"},
+		 {id: "第二产业", y: 76780987,  x: "2015"},
+		 {id: "第三产业", y: 103287649,  x: "2015"},
+		 {id: "第一产业", y: 7208400,  x: "2015"},
+		 {id: "第二产业", y: 83106513,  x: "2016"},
+		 {id: "第三产业", y: 117607690,  x: "2016"},
+		 {id: "第一产业", y: 8284000,  x: "2016"},
+		 {id: "第二产业", y: 93180979,  x: "2017"},
+		 {id: "第三产业", y: 131523886,  x: "2017"},
+		 {id: "第一产业", y: 19572100,  x: "2017"},
+		 {id: "第二产业", y: 99619472,  x: "2018"},
+		 {id: "第三产业", y: 142379364,  x: "2018"},
+		 {id: "第一产业", y: 22093500,  x: "2018"},
+        ];   
+      new d3plus.LinePlot()
+        .config({
+          data: myData,
+		  select: "#viz",
+          groupBy: "id",
+         })
+        .render();
+
+
+
+    </script>
+
+  </body>
+
+</html>

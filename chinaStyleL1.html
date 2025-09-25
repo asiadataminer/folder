@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pie Chart Tooltip | D3plus</title>
+    <script src="js/d3plus@2.js"></script>
+	<style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+	  #viz {
+  height: 83%;
+  width: 100%;
+}
+    </style>
+  </head>
+  <body><p id="demo" style="font-size:20px; height:30px; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">咨询对象</p>
+    <div id="viz"></div>
+	<script>
+      var myData = [
+{"name":"其他妇女","pop":141},
+{"name":"其他青少年儿童","pop":84},
+{"name":"其他人员","pop":50},
+{"name":"在册外单亲母亲","pop":26},
+{"name":"在册内困境儿童","pop":4},
+{"name":"在册内单亲母亲","pop":21},
+      ];
+	  
+	   new d3plus.Treemap()
+	     .config({
+            data:myData,
+		 select: "#viz",
+    	    groupBy: [
+                   'name'
+            ],
+          sum:"pop"
+		  })
+        .render();
+		
+	/*	
+	    new d3plus.Donut()
+        .config({
+         data:myData,
+         groupBy: "name",
+         value: "pop",
+		 select: "#viz",
+	     padAngle:0.02,
+	     dataCutoff: 10,
+	    legend: true	
+          })
+		  .tooltipConfig({
+            tbody: [
+              ["数量", function(d) { return d["pop"] }]
+            ]
+          })
+       .render();
+
+      new d3plus.Pie()
+        .config({
+          data: myData,
+          groupBy: ["name"],
+		  select: "#viz",
+          value: function(d) {
+            return d["pop"];
+          },
+          tooltipConfig: {
+            tbody: [
+              ["数量", function(d) { return d["pop"] }]
+            ]
+          }
+          })
+        .render();
+*/
+    </script>
+	  </body>
+</html>

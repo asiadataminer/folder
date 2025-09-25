@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Coordinate Points on a Map | D3plus</title>
+
+     <script src="js/d3plus-hierarchy.v0.9.full.min.js"></script>
+
+    <style>
+
+        body {
+        margin: 0;
+        overflow: hidden;
+      }
+	  #viz {
+  height: 350px;
+  width: 100%;
+}
+
+    </style>
+
+
+  </head>
+
+  <body>
+  <p id="demo" style="font-size:20px; height:15%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">全市各行业用电情况</p>
+    <div id="viz"></div> <script>
+  var data = [
+        {parent: "Group 1", id: "农、林、牧、渔业", value: 89886.5592},
+        {parent: "Group 1", id: "工业", value: 1993072.243243},
+        {parent: "Group 1", id: "建筑业", value: 46125.7033},
+        {parent: "Group 2", id: "交通运输、仓储、邮政业", value: 15112.4453},
+        {parent: "Group 2", id: "信息传输、软件和信息技术服务业", value: 28030.6502},
+		{parent: "Group 2", id: "批发和零售业", value: 204785.9002},
+		{parent: "Group 2", id: "住宿和餐饮业", value: 56417.5036},
+		{parent: "Group 2", id: "金融业", value: 5705.1832},
+		{parent: "Group 2", id: "房地产业", value: 30331.3794},
+		{parent: "Group 2", id: "租赁和商务服务业", value: 22875.2633},
+		{parent: "Group 2", id: "公共服务及管理组织", value: 122523.6111},
+		{parent: "Group 2", id: "城乡居民生活用电", value: 550988.277}
+      ];
+
+      new d3plus.Treemap()
+        .data(data)
+		.select("#viz")
+          .sum("value")
+        .render();
+
+
+    </script>
+
+  </body>
+
+</html>

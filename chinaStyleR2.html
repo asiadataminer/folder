@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style> 
+  .odd{background-color: white;} 
+  .even{background-color: rgba(200, 200, 255, 1.0);} 
+</style>
+
+</head>
+<body>
+<div id="demo" style="font-size:20px; height:15%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">访谈进行中</div>
+<table id="theTable"> 
+
+<tr><td>姓名</td><td>人员类别</td><td>年龄</td><td>问题类型</td><td>经济状况</td><td>籍贯</td></tr> 
+<tr><td>胡大姐</td><td>在册外单亲母亲</td><td>42</td><td>情绪困扰</td><td>良好</td><td> 广东省</td></tr>
+<tr><td>陆大姐</td><td>其他妇女</td><td>45</td><td>婚恋情感</td><td>优</td><td>河南省</td></tr>
+<tr><td>张小朋友</td><td>其他青少年儿童</td><td>12</td><td>亲子教育</td><td>一般</td><td>广东省</td></tr>  
+<tr><td>聂大姐</td><td>在册内单亲母亲</td><td>35</td><td>婚恋情感</td><td>良好</td><td>湖南省</td></tr>
+<tr><td>黄大姐</td><td>其他妇女</td><td>38</td><td>亲子教育</td><td>优</td><td> 四川省</td></tr>
+
+</table>
+<script>
+   if(document.getElementsByTagName){  
+    var table = document.getElementById("theTable");   
+    var rows = table.getElementsByTagName("tr");   
+    for(i = 0; i < rows.length; i++){           
+  //manipulate rows 
+      if(i % 2 == 0){ 
+        rows[i].className = "even"; 
+      }else{ 
+        rows[i].className = "odd"; 
+      }       
+    } 
+  } 
+
+</script>
+</body>
+</html>

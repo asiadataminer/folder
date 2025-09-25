@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>图片滚动</title>
+
+<body><div style="font-size:20px; height:30;text-align: center;">茂名地区旅游产业</div>
+<style>
+body {
+        margin: 0;
+        overflow: hidden;
+      }
+#div2{position:absolute;}
+li{float:left;list-style-type:none;padding:0px;}
+img{border:none;}
+#div2 li a:hover{top:0px;}
+a{position:relative;}
+</style>
+</script>
+</head>
+<body>
+<div id="demo" style="overflow: hidden; width: 2000px; height:275px;align: center">
+        <table cellspacing="0" cellpadding="0" align="center" border="0" >
+            <tbody>
+                <tr>
+                    <td id="marquePic1" valign="top">
+                        <table width="2100px">
+                            <tr>
+								<td align="center">茂南区:露天矿</td>
+                                <td align="center">电白区:晏镜岭</td>
+                                <td align="center">电白区:放鸡岛</td>
+                                <td align="center">高州市:宝光塔</td>
+                                <td align="center">化州市:鼓楼</td>
+								<td align="center">信宜市·大田顶</td>
+                            </tr>
+							<tr>
+							<li><a href=""><img src="images/1.jpg" width="350" height="248"> </a></li>
+							<li><a href=""><img src="images/2.jpg" width="350" height="248"> </a></li>
+							<li><a href=""><img src="images/3.jpg" width="350" height="248"> </a></li>
+							<li><a href=""><img src="images/4.jpeg" width="350" height="248"> </a></li>
+							<li><a href=""><img src="images/5.jpeg" width="350" height="248"> </a></li>
+							<li><a href=""><img src="images/6.jpg" width="350" height="248"> </a></li>
+							<tr>
+                        </table>
+                    </td>
+                    <td id="marquePic2" valign="top">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript">
+    //横向滚动 需要设置div的宽度
+    var speed=15
+    marquePic2.innerHTML=marquePic1.innerHTML
+    function Marquee(){
+        if(demo.scrollLeft>=marquePic1.scrollWidth){
+            demo.scrollLeft=0
+        }else{
+            demo.scrollLeft++
+        }
+    }
+    var MyMar=setInterval(Marquee,speed)
+    demo.onmouseover=function() {clearInterval(MyMar)}
+    demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>页面滚动</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style>
+      body {
+        margin: 0;
+        overflow: hid:den;
+      }
+	    #viz {
+  height: 75%;
+  width: 100%;
+  }
+    </style>
+</head>
+<body>
+    <div style="font-size:15px;margin-bottom:8px;:margin-top:8px; height:20;text-align: center;">国民经济和社会发展部分统计</div>
+
+    <div id="demo" style="OVERFLOW: hidden; height: 130px;",align="center">
+        <div id="marquePic1">
+            <br>全年粮食作物播种面积90.51万亩，同比增长1.5%。<br/>
+			<br>全年粮食产量40.44万吨，同比增长5.1%。<br/>
+			<br>全年全部工业增加值同比下降12.7%。<br/>
+			<br>全年全社会建筑业实现增加值43.25亿元，同比增长5.9%。<br/>
+			<br>全年金融业增加值20.77亿元，同比增长6.3%。<br/>
+			<br>全年房地产业增加值42.31亿元，同比增长9.1%。<br/>	
+			<br>全年交通运输、仓储和邮政业增加值22.14亿元，同比增长5.1%。<br/>
+			<br>全年批发和零售业增加值77.87亿元，同比下降4.7%。<br/>
+			<br>全年住宿和餐饮业增加值8.09亿元，同比下降16.0%。<br/>	
+			<br>全年第一产业投资同比增长397.2%。<br/>
+			<br>全年第二产业投资同比下降39.9%%。<br/>
+			<br>全年第三产业投资同比下降5.2%。<br/>	
+			<br>全年社会消费品零售总额224.43亿元，同比下降5.6%。<br/>		
+			<br>全年全市居民人均可支配收入23685.5元，同比增长7.5%。<br/>
+			<br>全年全市财政预算节能环保支出1.15亿元。<br/>
+        </div>
+        <div id="marquePic2" valign="top">
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    //纵向滚动 需要设置div的高度
+    var speed=20
+    marquePic2.innerHTML=marquePic1.innerHTML
+    function Marquee(){
+        if(demo.scrollTop>=marquePic1.scrollHeight){
+            demo.scrollTop=0
+        }else{
+            demo.scrollTop++
+        }
+    }
+    var MyMar=setInterval(Marquee,speed)
+    demo.onmouseover=function() {clearInterval(MyMar)}
+    demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+</script>

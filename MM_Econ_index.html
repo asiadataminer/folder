@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" href="css/js_index.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+<style>
+body {
+        margin: 0;
+        overflow: hidden;
+      }
+.gridL {
+  display: grid;
+  width:26%; 
+  float:left;
+  grid-auto-rows:210px 330px 330px; 
+  grid-gap: 1px;
+  padding: 4px;
+}
+.gridL > iframe {
+width: 100%;
+height: 100%;
+margin-top: 5px;
+margin-bottom: 5px;
+-moz-border-radius: 12px; 
+-webkit-border-radius: 12px;
+border-radius: 12px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 14px #000;
+} 
+
+.gridM {
+  display: grid;
+   width:45%;
+  float:left;
+   grid-auto-rows:320px 560px;
+  grid-gap: 1px;
+  padding: 5px;
+}
+.gridM > iframe {
+  width: 100%;
+height: 100%;
+margin-top: 5px;
+margin-bottom: 5px;
+  text-align: center;
+  padding: 0px;
+  font-size: 30px;
+  -moz-border-radius: 12px; 
+-webkit-border-radius: 12px;
+border-radius: 12px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 14px #000;
+}
+
+
+.gridR {
+  display: grid;
+  width:26%;
+  float:left;
+  margin-top: 5px;
+margin-bottom: 2px;
+  grid-auto-rows:290px 290px 290px;
+  grid-gap: 1px;
+  padding: 0px;
+}
+
+.gridR > iframe {
+width: 110%;
+height: 100%;
+margin-top: 5px;
+margin-bottom: 5px;
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border-radius: 12px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 14px #000;
+} 
+
+
+
+</style>
+<script src="js/company.js"></script>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=Ilovelady99"></script>
+</head>
+<body>
+<div class="gridL" id="grid1">
+ <iframe id="dist1" src="MM_n1.html"  ></iframe>
+<iframe id="dist2" src="MM_n2.html"  ></iframe>
+<iframe id="dist3" src="MM_n3.html"  ></iframe>
+</div>
+
+<div class="gridM"  id="grid2">
+   <iframe id="car" src="MM_n4.html"  ></iframe>
+  <iframe id="dist1" src="MM_n5.html"  ></iframe>
+</div>
+<div class="gridR"  id="grid3">
+  <iframe id="ss" src="MM_n6.html"  ></iframe>
+  <iframe id="vv" src="MM_n7.html"  ></iframe> 
+<iframe id="tt" src="MM_n8.html"  ></iframe>
+  </div>
+ 
+
+</body>
+</html>

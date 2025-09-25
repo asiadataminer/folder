@@ -1,0 +1,56 @@
+<html>
+<!doctype html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>饼图</title>
+
+    <script src="js/d3plus-hierarchy.v0.9.full.min.js"></script>
+
+    <style>
+
+      body {
+        margin: 12;
+        overflow: hidden;
+      }
+
+    </style>
+
+  </head>
+  
+  <body><div style="font-size:15px;text-align: center;">2021年茂名地区居民人居消费支出及其构成</div>
+
+    <script>
+//Number:食品店数量
+      var myData = [
+        {"Group": "医疗保健", "Sub-Group": "医疗保健", "Number":1453},
+        {"Group": "教育文化娱乐", "Sub-Group": "教育文化娱乐", "Number":1687},
+        {"Group": "交通通信", "Sub-Group": "交通通信", "Number":2152},
+        {"Group": "生活用户及服务", "Sub-Group": "生活用户及服务", "Number":1111},
+        {"Group": "居住", "Sub-Group": "居住", "Number":2563},
+        {"Group": "衣着", "Sub-Group": "衣着", "Number":926},
+		{"Group": "食用烟酒", "Sub-Group": "食用烟酒", "Number":6721},
+		{"Group": "其他用品和服务", "Sub-Group": "其他用品和服务", "Number":401}
+      ];
+      new d3plus.Pie()
+        .config({
+          data: myData,
+          groupBy: ["Group","Sub-Group"],
+          value: function(d) {
+            return d["Number"];
+          },
+          tooltipConfig: {
+            tbody: [
+              ["消费", function(d) { return d["Number"] } , "元"]
+            ]
+          }
+        })
+        .render();
+
+    </script>
+
+  </body>
+
+</html>

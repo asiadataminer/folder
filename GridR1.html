@@ -1,0 +1,326 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=scatter-single-axis
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+		    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+	<script src="data/tips.js"></script>
+    <style>
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+    </style>
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="js/1.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+var option = {
+    title: {
+    text: '未来十日天气',
+
+    left: 'center'
+  },
+        grid: {
+          show: true,
+          backgroundColor: 'transparent',
+          opacity: 0.3,
+          borderWidth: '0',
+          top: '130',
+          bottom: '-105'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          show: false
+        },
+        xAxis: [
+          // 日期
+          {
+            type: 'category',
+            boundaryGap: false,
+            position: 'top',
+            offset: 80,
+            zlevel: 100,
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              interval: 0,
+              formatter: [
+                '{a|{value}}'
+              ].join('\n'),
+              rich: {
+                a: {
+                  // color: 'white',
+                  fontSize: 14
+                }
+              }
+            },
+            nameTextStyle: {
+
+            },
+            data: ["今天","13日","14日","15日","16日","17日","18日",'19日','20日','21日']
+          },
+          // 星期
+          {
+            type: 'category',
+            boundaryGap: false,
+            position: 'top',
+            offset: 65,
+            zlevel: 100,
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              interval: 0,
+              formatter: [
+                '{a|{value}}'
+              ].join('\n'),
+              rich: {
+                a: {
+                  // color: 'white',
+                  fontSize: 10
+                }
+              }
+            },
+            nameTextStyle: {
+              fontWeight: 'bold',
+              fontSize: 19
+            },
+            data: ["周三","周四","周五","周六","周日","周一","周二","周三","周四","周五"]
+          },
+
+          // 天气图标
+          {
+            type: 'category',
+            boundaryGap: false,
+            position: 'top',
+            offset: 0,
+            zlevel: 100,
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              interval: 0,
+              formatter: function(value, index) {
+                return '{' + index + '| }\n{b|' + value + '}'
+              },
+              rich: {
+                0: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[0]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                1: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[1]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                2: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[2]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                3: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[3]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                4: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[4]] + '.png')
+                    image: 'data/晴.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                5: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[5]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                6: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[6]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                7: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[5]] + '.png')
+                    image: 'data/小雨.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                8: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[5]] + '.png')
+                    image: 'data/小雨.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                9: {
+                  backgroundColor: {
+                    // image: require('@/assets/weather_icon/' + this.weatherIconDic[this.weatherdata.weather[5]] + '.png')
+                    image: 'data/多云.png'
+                  },
+                  height: 30,
+                  width: 30
+                },
+                
+                b: {
+                  // color: 'white',
+                  fontSize: 10,
+                  lineHeight: 30,
+                  height: 0
+                }
+              }
+            },
+            nameTextStyle: {
+              fontWeight: 'bold',
+              fontSize: 15
+            },
+            // data: this.weatherdata.weather
+            data: ["多云","多云","多云","多云","晴天","多云","多云","小雨","小雨","多云"]
+          }
+        ],
+        
+        yAxis: {
+          type: 'value',
+          show: false,
+          axisLabel: {
+            formatter: '{value} °C',
+            color: 'white'
+          }
+        },
+        series: [
+          {
+            name: '最高气温',
+            type: 'line',
+            data: ["21.2","21","22.5","23.1","23.4","23.1","24.2","24.4","23.1","23.3"],
+            symbol: 'emptyCircle',
+            symbolSize: 1,
+            showSymbol: true,
+            smooth: true,
+            itemStyle: {
+              normal: {
+                color: '#C95843',
+              }
+            },
+            label: {
+              show: true,
+              position: 'top',
+              // color: 'white',
+              formatter: '{c} °C'
+            },
+            lineStyle: {
+              width: 1,
+              // color: 'white'
+            },
+            areaStyle: {
+              opacity: 2,
+              color: 'transparent'
+            }
+          },
+          {
+            name: '最低气温',
+            type: 'line',
+            data: ["13","15.2","14.1","14.2","15.4","16","18.1","18.2","18","18.5"],
+            symbol: 'emptyCircle',
+            symbolSize: 1,
+            showSymbol: true,
+            smooth: true,
+            itemStyle: {
+              normal: {
+                color: 'blue'
+              }
+            },
+            label: {
+              show: true,
+              position: 'top',
+              // color: 'white',
+              formatter: '{c} °C'
+            },
+            lineStyle: {
+              width: 1,
+              // color: 'white'
+            },
+            areaStyle: {
+              opacity: 5,
+              color: 'transparent'
+            }
+          }
+        ]
+      }
+
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+    

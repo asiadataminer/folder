@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+		<title>D3 - Transition - Populations of Cities</title>
+		<!-- <script type="text/javascript" src="d3/d3.min.js"></script>  -->
+		<script src="js/d3.v4.js"></script>
+<script src="js/bar1.js"></script>
+		<style>
+			
+		</style>
+	</head>
+
+	<body>
+<p id="demo" style="font-size:15px; height:25%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">各镇区常住人均生产总值</p>
+		<svg width="340" height="320">
+		</svg>
+
+        <script type="text/javascript">
+        	var width = 540;
+        	var height = 500;
+
+        	var cities = myData;
+
+			var svg = d3.select("svg");
+			var fontSize = 12;
+
+			var cityNames = cities.map(function(d) {return d.name});
+			var bandScale = d3.scaleBand()
+				.domain(cityNames)
+				.range([0, 0.6*height])
+				.paddingOuter(0.1)
+				.paddingInner(0.1);
+
+			var pop2width = d3.scaleLinear()
+				.domain([0, 150995])
+				.range([0, 0.6*width]);
+            var colorScale = d3.scaleOrdinal()
+				.domain(cityNames)
+				.range(d3.schemeCategory10);
+
+			var xAxis = d3.axisBottom(pop2width)
+							.ticks(6);
+							// .tickPadding(3);
+							// .tickFormat(d3.format(".1s"));
+
+			svg.append("g")
+				.classed('axis', true)
+				.attr("transform", 
+					"translate(40, " 
+					+ 0.6*height + ")")
+				.call(xAxis);
+
+			var barChartG = svg.append('g')
+				.attr('id', 'bar-chart');
+
+			var texts = barChartG.append('g')
+				.selectAll('text')
+				.data(cities)
+				.enter().append("text")
+				.attr('x', 0)
+				.attr('y', function(d, i) {
+					return bandScale(d.name);
+				})
+				.attr('font-size', fontSize)
+				// set anchor and alignment for texts
+				.attr('text-anchor', 'start')
+				.attr('alignment-baseline', 'hanging')
+				.text(function(d) {
+					return d.name;
+				});
+
+			var rects =  barChartG.selectAll("rect")
+				.data(cities)
+				.enter().append("rect")
+				.attr("x", 40)
+				.attr("y", function(d) {
+					return bandScale(d.name);
+				})
+				.attr("id",function(d,i) {return "rect"+i;})
+				.attr("height", bandScale.bandwidth()).attr("width",10)
+				.style("fill", "black");
+			for (var i = 0; i < cities.length; i += 1) {	
+			    d3.select("#rect"+i)
+				.style('fill', colorScale(cities[i]["name"]))
+                .transition()
+		  	   // .ease(d3.easeLinear)
+				.duration(2000).delay(500)
+				.style("width", pop2width(cities[i]["pop"]));
+			}	
+        </script>	
+		<p>由此可见:中山市经济比较发达的地区为东区和火炬区。沙溪镇和坦洲镇的经济水平还有待提高。</p>
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+<style>
+
+.gridL {
+  display: grid;
+  width:26%;
+  float:left;
+  margin-top: 5px;
+margin-bottom: 2px;
+  grid-auto-rows:310px 310px 310px;
+  grid-gap: 1px;
+  background-color: rgba(255, 255, 220, 0.8);
+  padding: 5px;
+}
+.gridL > iframe {
+width: 100%;
+height: 98%;
+margin-top: 2px;
+margin-bottom: 2px;
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border-radius: 2px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 2px #000;
+} 
+
+.gridM {
+  display: grid;
+   width:45%;
+  float:left;
+   grid-auto-rows:450px 30px 450px;
+  grid-gap: 1px;
+   background-color: rgba(255, 255, 220, 0.8);
+  padding: 5px;
+}
+.gridM > iframe {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+height: 95%;
+margin-top: 5px;
+margin-bottom: 2px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 30px;
+}
+
+
+.gridR {
+  display: grid;
+  width:26%;
+  float:left;
+  margin-top: 5px;
+margin-bottom: 2px;
+  grid-auto-rows:310px 310px 310px;
+  grid-gap: 1px;
+  background-color: rgba(255, 255, 220, 0.8);
+  padding: 5px;
+}
+
+
+
+.gridR > iframe {
+width: 100%;
+height: 98%;
+margin-top: 5px;
+margin-bottom: 5px;
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border-radius: 2px;
+-moz-box-shadow: 4px 4px 14px #000;
+-webkit-box-shadow: 4px 4px 14px #000;
+box-shadow: 4px 4px 2px #000;
+} 
+
+</style>
+<script src="js/companyXL.js"></script>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=Ilovelady99"></script>
+</head>
+<body>
+<div class="gridL" id="grid1">
+ <iframe id="dist1" src="chinaStyleL1.html"  ></iframe>
+<iframe id="dist2" src="chinaStyleL2.html"  ></iframe>
+<iframe id="dist3" src="chinaStyleL3.html"  ></iframe>
+</div>
+ <div class="gridM"  id="grid2">
+  <iframe id="car" src="carousal.html"  ></iframe>
+  <div id="demo" style="font-size:20px; height:30px; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">办公点</div>
+<div id="container">
+
+</div>
+  </div>
+<div class="gridR"  id="grid3">
+  <iframe id="ss" src="chinaStyleR1.html"  ></iframe>
+  <iframe id="vv" src="chinaStyleR2.html"  ></iframe> 
+<iframe id="tt" src="chinaStyleR3.html"  ></iframe>
+  </div>
+ 
+<script type="text/javascript">
+    var map = new AMap.Map("container", {
+        viewMode: '3D',
+        zoom: 12,
+        center: [113.55,22.245],
+        resizeEnable: true
+    });
+
+    // 创建纯文本标记
+for (var i = 0; i < points.length; i += 1) {
+var text3=new AMap.Text({
+        text: officeAd[i]['name']+":"+nums[i]['number'],
+        anchor:'center', // 设置文本标记锚点
+        draggable:true,
+        cursor:'pointer',
+        style:{
+             'padding': '10px 10px',
+            'margin-bottom': '1px',
+			'border-radius': '.25rem',
+            'background-color': 'white',
+            'width': '120px',
+			'height':'10px',
+            'border-width': 0,          
+            'text-align': 'center',
+            'font-size': '10px',
+            'color': 'black',
+			'-moz-box-shadow': '4px 4px 14px #000',
+            '-webkit-box-shadow': '4px 4px 14px #000',
+            'box-shadow': '4px 4px 14px #000',
+        },
+        position: points[i]['lnglat'],
+    });
+
+text3.setMap(map);
+}
+</script>
+</body>
+</html>

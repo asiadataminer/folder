@@ -1,0 +1,188 @@
+<html>
+
+  <head>
+<body><p id="demo" style="font-size:20px; height:10%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">2020年上半年气候条件</p>
+    <meta charset="utf-8">
+    <title>Bar Chart Axis and Grid Styling | D3plus</title>
+
+    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+<script src="js/d3.v4.js"></script>
+<script src="js/d3-scale-chromatic.v1.min.js"></script>
+    <style type="text/css">
+  
+	  #my_dataviz {
+  height: 80%;
+  width: 100%;
+}
+body{ margin: 0;
+        overflow: hidden;
+    }
+ .toolTip {
+  position: absolute;
+  display: none;
+  min-width: 10px;
+  height: auto;
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #6F257F;
+  padding: 5px;
+  text-align: center;
+}	
+	
+</style>
+
+  </head>
+
+  <body>
+  <button onclick="drawDat(data12)">平均温度</button>
+<button onclick="drawDat(data13)">降雨量</button>
+<button onclick="drawDat(data14)">日照时间</button>
+
+
+<div id="my_dataviz"></div>
+    <script>
+
+
+var dataT=[{Region:"一  月",Year:"平均温度",Sale:17.5},
+{Region:"一  月",Year:"降雨量",Sale:23.5},
+{Region:"一  月",Year:"日照时间",Sale:121.6},
+{Region:"二  月",Year:"平均温度",Sale:17.6},
+{Region:"二  月",Year:"降雨量",Sale:60.5},
+{Region:"二  月",Year:"日照时间",Sale:94},
+{Region:"三  月",Year:"平均温度",Sale:21.2},
+{Region:"三  月",Year:"降雨量",Sale:97.7},
+{Region:"三  月",Year:"日照时间",Sale:68.1},
+{Region:"四  月",Year:"平均温度",Sale:21.2},
+{Region:"四  月",Year:"降雨量",Sale:122.7},
+{Region:"四  月",Year:"日照时间",Sale:127.8},
+{Region:"五  月",Year:"平均温度",Sale:27.8},
+{Region:"五  月",Year:"降雨量",Sale:211.1},
+{Region:"五  月",Year:"日照时间",Sale:121.6},
+{Region:"六 月",Year:"平均温度",Sale:29.5},
+{Region:"六 月",Year:"降雨量",Sale:137.4},
+{Region:"六 月",Year:"日照时间",Sale:192.2},
+];
+
+//json对象数组选择一个特征，该特征数值转换为不重合的数组
+var years=Array.from(new Set(dataT.map(a => a.Year)));
+ console.log(years[0]);
+ //json对象数组划分，获取各年份的数据
+var data12a=dataT.filter(item => item.Year == "平均温度"); 
+var data13=dataT.filter(item => item.Year == "降雨量"); 
+var data14=dataT.filter(item => item.Year == "日照时间"); 
+var data15=dataT.filter(item => item.Year == "灰霾天气日数"); 
+
+//json对象数组，删除其中一个特征
+ var data12 = data12a.filter(function (props) {
+        delete props.Year;
+        return true;
+    });
+ var data13 = data13.filter(function (props) {
+        delete props.Year;
+        return true;
+    });
+ var data14 = data14.filter(function (props) {
+        delete props.Year;
+        return true;
+    });
+	 var data15 = data15.filter(function (props) {
+        delete props.Year;
+        return true;
+    });
+			
+//json对象数组获取其中一个特征，即各年的各国销售额
+let result13 = data13.map(a => a.Sale);
+let result14 = data14.map(a => a.Sale);
+let result15 = data15.map(a => a.Sale);
+ 
+
+//
+var margin = { top: 20, right: 30, bottom: 40, left: 40 },
+    width = 400 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+var myColor = d3.scaleOrdinal().domain(data12.map(function(d) { return d.Region; })) .range(["gold", "blue", "green", "yellow", "black", "grey"]);
+
+var k;
+drawDat(data12);
+function drawDat(data){
+if (data==data12){k=0;}
+if (data==data13){k=1;}
+if (data==data14){k=2;}
+if (data==data15){k=3;}
+		//data.sort(function(b, a) {
+   // return a.Sale - b.Sale;
+//  });
+
+	//console.log(data);
+	d3.select("svg").remove();
+ // .range(["gold", "blue", "green", "yellow", "black", "grey", "darkgreen", "pink", "brown", "slateblue", "grey1", "orange"])
+var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+ var x = d3.scaleBand()
+    .range([ 0, width ])
+    .domain(data.map(function(d) { return d.Region; }))
+    .padding(0.2);
+  svg.append("g")
+    .attr("transform", "translate(0," + (height-15) + ")")
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+      .attr("transform", "translate(-10,0)rotate(-45)")
+      .style("text-anchor", "end");
+var t = d3.transition()
+   .duration(2000);
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, 220])
+    .range([ height-15, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
+ // Bars
+  var bars=svg.selectAll("mybar")
+    .data(data)
+    .enter()
+    .append("rect")
+	  .attr("x", function(d) { return x(d.Region); })
+      .attr("y", function(d) { return y(d.Sale)-15; })
+      .attr("width", x.bandwidth())
+	  .attr("height", function(d) { return height - y(d.Sale); })
+      .attr("fill", function(d){return myColor(d.Region) })
+	   .on("mouseover", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html((d.Region) + "<br>" + "$" + (Math.round(d.Sale)));
+        })
+    		.on("mouseout", function(d){ tooltip.style("display", "none");});
+;
+svg.selectAll("mybar")
+    .data(data)
+    .enter().append("text")
+	   .attr("x", function(d) { return x(d.Region)+x.bandwidth()/2-5; })
+    .attr("y", function (d) { return y(d.Sale)-15 - 20; })
+    .attr("dy", ".75em")
+    .text(function (d) {if ((y(d.Sale) - 20) <height -30) return Math.round(d.Sale,0); });
+svg.append("text")
+	   .attr("x", width/2-50)
+    .attr("y", 0)
+    .attr("dy", ".75em")
+    .text(years[k])
+	.style("font-size", "20px");;	
+}
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}	
+</script>
+
+  </body>
+
+</html>

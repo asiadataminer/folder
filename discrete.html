@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+.graph{
+  height: 250px;
+  width: 400px
+} 
+.graph2{
+  height: 500px;
+  width: 600px
+} 
+</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Data Visualization Basic Graphs</title>
+  
+ <link href="lib/style.css" rel="stylesheet">
+  
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="lib/font-awesome.css" rel="stylesheet" />
+ 
+  </head>
+
+
+<body>
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="discrete.html" class="logo"><b>dashboards</b></a>
+      
+           
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          
+          <li class="sub-menu">
+            <a class="active" href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>Basic Statistics</span>
+              </a>
+            <ul class="sub">
+              <li><a href="discrete.html">Discrete</a></li>
+              <li><a href="continuous.html">Continuous</a></li>
+              <li><a href="correlation.html">Relations</a></li>
+              <li><a href="timeSeries.html">Time Series</a></li>
+          </ul>
+          </li>
+          <li class="sub-menu">
+            <a class="active" href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>Networks</span>
+              </a>
+            <ul class="sub">
+              <li><a href="network.html">Net Graphs</a></li>
+              </ul>
+          </li>
+            <li class="sub-menu">
+            <a class="active" href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>地理分布</span>
+              </a>
+            <ul class="sub">
+              <li><a href="usamap.html">美国地图</a></li>
+            </ul>
+          </li>
+		  <li class="sub-menu">
+            <a class="active" href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>dashboards</span>
+              </a>
+            <ul class="sub">
+              <li><a href="index_d.html">Business Dashboard</a></li>
+			  </ul>
+          </li>
+		  
+		  
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+       
+        
+            <div class="row mt">
+              <!-- SERVER STATUS PANELS -->
+              <div class="col-md-4 col-sm-4 mb">
+                
+                  <div class="grey-header">
+                    <h5>排序条形图</h5>
+                  </div>
+                  
+				  <iframe id="dist1" src="barSorted.html" class="graph"  ></iframe>
+				  
+				 
+                <!-- /grey-panel -->
+              </div>
+              <!-- /col-md-4-->
+              <div class="col-md-4 col-sm-4 mb">
+               
+                  <div class="darkblue-header">
+                    <h5>饼图</h5>
+                  </div>
+                  <iframe id="dist2" src="pie.html" class="graph"  ></iframe>
+				  
+                <!--  /darkblue panel -->
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 col-sm-4 mb">
+                <!-- REVENUE PANEL -->
+                 <div class="green-header">
+                    <h5>甜甜圈</h5>
+                  </div>
+                 <iframe id="dist3" src="donut.html" class="graph"  ></iframe>
+				       </div>
+              </div>
+              <!-- /col-md-4 -->
+            </div>
+            <!-- /row -->
+            <div class="row">
+              <!-- WEATHER PANEL -->
+              <div class="col-md-4 mb">
+                                  <div class="green-header">
+                    <h5>水平条形图</h5>
+                  </div>
+				  <iframe id="dist4" src="hBar.html" class="graph">
+                </iframe>
+              </div>
+              <!-- /col-md-4-->
+                <div class="col-md-4 mb">
+                      <div class="green-header">
+                    <h5>饼图2</h5>
+                  </div>
+				  <iframe id="dist5" src="epie.html" class="graph">
+                </iframe>
+              </div>
+                
+			  <div class="col-md-4 mb">
+                <!-- WHITE PANEL - TOP USER -->
+              
+                  <div class="white-header">
+                    <h5>甜甜圈2</h5>
+                  </div>
+                <iframe id="dist6" src="edonut.html" class="graph"  ></iframe>
+				 
+                 
+                </div>
+                     
+        </div>
+		 <div class="row">
+              <!-- WEATHER PANEL -->
+              <div class="col-md-4 mb">
+                                  <div class="green-header">
+                    <h5>分组条形图</h5>
+                  </div>
+				  <iframe id="dist10" src="groupedBar.html" class="graph">
+                </iframe>
+              </div>
+              <!-- /col-md-4-->
+                <div class="col-md-4 mb">
+                      <div class="green-header">
+                    <h5>累积条形图</h5>
+                  </div>
+				  <iframe id="dist11" src="stackedBar.html" class="graph">
+                </iframe>
+              </div>
+                
+			  <div class="col-md-4 mb">
+                <!-- WHITE PANEL - TOP USER -->
+              
+                  <div class="white-header">
+                    <h5>树图</h5>
+                  </div>
+                <iframe id="dist12" src="treeMap.html" class="graph"  ></iframe>
+				 
+                 
+                </div>
+                     
+        </div>
+		 <div class="row">
+              <!-- WEATHER PANEL -->
+              <div class="col-md-6" >
+                                  <div class="green-header">
+                    <h5>金字塔图:两性不同年龄段的人数</h5>
+                  </div>
+				  <iframe id="dist13" src="pyramid.html" class="graph2">
+                </iframe>
+              </div>
+              <!-- /col-md-4-->
+                <div class="col-md-6 ">
+                      <div class="green-header">
+                    <h5>累积百分图</h5>
+                  </div>
+				  <iframe id="dist14" src="stackedPercentBar.html" class="graph2">
+                </iframe>
+              </div> 
+			  </div>
+        <!-- /row -->
+      </section>
+    </section>
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+      <div class="text-center">
+         <p>
+          &copy; Copyrights <strong>Baokun Li</strong>. All Rights Reserved
+        </p>
+        
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+    <script src="lib/jquery/jquery.min.js"></script>
+
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="lib/jquery.scrollTo.min.js"></script>
+  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="lib/jquery.sparkline.js"></script>
+  <!--common script for all pages-->
+  <script src="lib/common-scripts.js"></script>
+ 
+  
+</body>
+</html>

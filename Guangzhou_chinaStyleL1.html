@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pie Chart Tooltip | D3plus</title>
+    <script src="js/d3plus-hierarchy.v0.9.full.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+	  #viz {
+  height: 80%;
+  width: 100%;
+}
+    </style>
+  </head>
+  <body><p id="demo" style="font-size:20px; height:15%; color: rgba(55, 55, 255, 1.0); background-color: rgba(245,222,179);">广州产业占比</p>
+    <div id="viz"></div>
+	<script>
+      var myData = [
+{"name":"第一产业","pop":251.37},
+{"name":"第二产业","pop":6454},
+{"name":"第三产业","pop":16923.23},
+      ];
+      new d3plus.Pie()
+        .config({
+          data: myData,
+          groupBy: ["name"],
+		  select: "#viz",
+          value: function(d) {
+            return d["pop"];
+          },
+          tooltipConfig: {
+            tbody: [
+              ["数量", function(d) { return d["pop"] }]
+            ]
+          }
+          })
+        .render();
+    </script>
+	  </body>
+</html>

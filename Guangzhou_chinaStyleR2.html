@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+<style> 
+  .odd{background-color: white;} 
+  .even{background-color: rgba(200, 200, 255, 1.0);} 
+</style>
+
+</head>
+<body>
+<div id="demo" style="font-size:20px; height:30px; color: rgba(55, 55, 255, 1.0); background-color: rgba(245,222,179);">广州特产美食</div>
+<table id="theTable"> 
+
+<tr><td>名称</td><td>简述</td></tr> 
+
+<tr><td>广州早茶</td><td>早茶是广州人的一种饮食风俗，吃早茶并不等于饮茶，其实质是“吃早餐”，其品类多种多样。</td></tr> 
+<tr><td>牛杂</td><td>牛杂，又称“牛杂碎”，是牛内脏的统称，是发源于老广州地区的一道传统美食。有牛肉、牛肚、牛心、牛肝、牛百叶、牛肠、萝卜等。</td></tr>
+<tr><td>白切鸡</td><td>是一道经典的粤菜。因烹鸡时不加调味白煮而成，食用时随吃随斩，故称“白斩鸡”。</td></tr>    
+<tr><td>烤乳猪</td><td>烤乳猪是广州最著名的特色菜，并且是“满汉全席”中的主打菜肴之一。</td></tr>
+<tr><td>艇仔粥</td><td>艇仔粥是广东省广州市荔湾区的一道传统小吃。配料有生鱼片、瘦肉、油条丝、花生、葱花、蛋丝、浮皮、海蜇丝、叉烧丝、烧鸭丝和鱿鱼等。</td></tr> 
+<tr><td>鸡仔饼</td><td>鸡仔饼是广东省广州市的一种特色小吃，其口味甘香酥脆。主要原料为面粉、花生、芝麻、核桃等，始创于清朝咸丰年间，有170年的历史。</td></tr> 
+
+</table>
+<script>
+   if(document.getElementsByTagName){  
+    var table = document.getElementById("theTable");   
+    var rows = table.getElementsByTagName("tr");   
+    for(i = 0; i < rows.length; i++){           
+  //manipulate rows 
+      if(i % 2 == 0){ 
+        rows[i].className = "even"; 
+      }else{ 
+        rows[i].className = "odd"; 
+      }       
+    } 
+  } 
+
+</script>
+</body>
+</html>

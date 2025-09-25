@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My map</title>
+<script type="text/javascript" src="js/d3.v5.min.js"></script>
+<script src="js/d3-geo-projection.v2.min.js"></script>
+<script src="js/d3-scale-chromatic.v1.min.js"></script>
+<script src="maps/412825.js"></script>
+<script src="maps/zhuPop.js"></script>
+<link rel="stylesheet" type="text/css" href="js/map.css">
+<style>
+ body {
+        margin: 0;
+        overflow: hidden;
+     /*position: relative;*/
+      }
+    text{
+        fill: white;
+    }
+ #demo{
+     font-size:20px;
+     /*color: rgba(55, 55, 400, 1.0);*/
+     color: pink;
+     margin-top: -3px;
+     margin-left: 264px;
+ }
+ #container{
+     margin-top: -15px;
+ }
+ #container svg{
+     height: 384px;
+     margin-left: -3px;
+ }
+</style>
+
+</head>
+<body >
+    <p id="demo">驻马店市地图</p>
+    <div id="container" class="svg-container"></div>
+    <script type="text/javascript">
+    var w = 1300;
+    var h = 700;
+    var svg = d3.select("div#container").append("svg").attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .classed("svg-content", true);
+  // 装载数据 
+var mymap = geodata;
+  // 设置颜色
+var colorScale = d3.scaleThreshold()
+   .domain([11200,11500,11800,12000,12300,12600,12900,13200,13500])
+   .range(d3.schemeBuPu[9]);	
+	
+    var projection = d3.geoMercator()
+	                .translate([w/2, h/2])
+					.scale(20000).center([113.82,32.78]);			
+    var path = d3.geoPath().projection(projection);
+
+
+
+Promise.all([mymap, pop]).then(function(values){    
+// 画地图填色
+    svg.selectAll("path")
+        .data(values[0].features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("fill", function (d) {
+        d.total = pop[d.properties["adcode"]] || 0;
+        return colorScale( d.total);
+      })
+      .style("stroke", "black")
+           .style("opacity", .8)  ;
+//填入地名
+svg.selectAll("text")
+  .data(values[0].features)
+  .enter()
+  .append("text")
+  .text(function(d, i) {
+    return d.properties.name;
+}).transition().style("font-size","22px").duration(2000)
+.attr("x", function(d) {return projection(d.properties.centroid)[0]})
+.attr("y", function(d) {return projection(d.properties.centroid)[1] });
+//填入作者地址
+svg.append("text")
+.text("欢迎您！").transition()
+            .style("color","white").style("font-size","40px").delay(2000).duration(2000)
+.attr("x", projection([112.62,33.23])[0])
+.attr("y", projection([113.82,33.23])[1])
+;
+// 创建图例，创建列表
+var keys = ["11200-11300","11300-11500", "11500-11800", "11800-12000", "12000-12300", "12300-12600", "12600-12900", "12900-13200", "13200-13500"]
+svg.selectAll("mydots")
+  .data(keys)
+  .enter()
+  .append("circle")
+    .attr("cx", 100)
+    .attr("cy", function(d,i){ return 280 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("r", 7)
+    // .style("fill", function(d,i){ return colorScale(800+i*11000)});
+    .style("fill", function(d,i){ return colorScale(800+i*11000)});
+svg.selectAll("mylabels")
+  .data(keys)
+  .enter()
+  .append("text")
+    .attr("x", 120)
+    .attr("y", function(d,i){ return 280 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .style("fill", function(d,i){ return colorScale(800+i*11000)})
+    .style("fill","white")
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle");
+ });
+</script>
+</body>
+</html>

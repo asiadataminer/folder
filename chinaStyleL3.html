@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多时间序列</title>
+   <script src="js/d3plus@2.js"></script>
+	    <style>
+      body {
+        margin: 0;
+        overflow: hid:den;
+      }
+	    #viz {
+  height: 80%;
+  width: 100%;
+  }
+    </style>
+  </head>
+  <body><p id="demo" style="font-size:20px; height:10%; color: rgba(55, 55, 255, 1.0); background-color: rgba(200, 150, 250, 0.8);">最近半年进度</p>
+    <div id="viz"></div>
+    <script>
+         var myData = [
+		 {id: "个人咨询", y: 47,  x: "20.05"},
+		 {id: "家庭咨询", y: 15,  x: "20.05"},
+         {id: "个人咨询", y: 43,  x: "20.06"},
+		 {id: "家庭咨询", y: 17,  x: "20.06"},
+		 {id: "个人咨询", y: 36,  x: "20.07"},
+		 {id: "家庭咨询", y: 11,  x: "20.07"},
+		 {id: "个人咨询", y: 41,  x: "20.08"},
+		 {id: "家庭咨询", y: 13,  x: "20.08"},
+		 {id: "个人咨询", y: 48,  x: "20.09"},
+		 {id: "家庭咨询", y: 16,  x: "20.09"},
+		 {id: "个人咨询", y: 52,  x: "20.10"},
+		 {id: "家庭咨询", y: 17,  x: "20.10"}
+        ];   
+      new d3plus.LinePlot()
+        .config({
+          data: myData,
+		  select: "#viz",
+          groupBy: "id",
+         })
+        .render();
+
+
+
+    </script>
+
+  </body>
+
+</html>

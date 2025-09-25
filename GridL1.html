@@ -1,0 +1,119 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=pie-borderRadius
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+		    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+	<script src="data/tips.js"></script>
+    <style>
+
+      body {
+        margin: 0;
+        overflow: hidden;
+		max-width:1000%;
+		height: auto;
+		
+      }
+
+    </style>
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="js/1.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+option = {
+  title: {
+    text: '商业业态分布',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+    itemHeight: 8,
+    textStyle:{fontSize: 11
+}
+      
+    },
+  series: [
+    
+    {
+      name: '',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: '#fff',
+        borderWidth: 5
+      },
+      
+      label: {
+        show: false,
+        formatter: "{d}%",
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '20',
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        length: 3
+      },
+      data: [
+        { value: 19, name: '旅行服务' },
+        { value: 686, name: '丽人养生' },
+        { value: 1613, name: '家居家具' },
+        { value: 1138, name: '生活服务' },
+        { value: 204, name: '儿童亲子' },
+        { value: 395, name: '教育培训' },
+        { value: 221, name: '休闲娱乐' },
+        { value: 3288, name: '零售' },
+        { value: 2409, name: '餐饮' }
+      ]
+    }
+  ]
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+    

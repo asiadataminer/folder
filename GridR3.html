@@ -1,0 +1,217 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=bar-y-category-stack
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+		    <script src="js/d3plus-plot.v0.9.full.min.js"></script>
+	<script src="data/tips.js"></script>
+    <style>
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+    </style>
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="js/1.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+option = {
+   title: {
+    text: '人口分布与年龄比例',
+    fontStyle:'lighter',
+    left: 'center',
+    textStyle:{fontSize: 13,
+    color:'#000000',
+
+}
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      // Use axis to trigger tooltip
+      type: 'shadow' 
+    },
+    
+  },
+legend: {
+    top: '7%',
+    left: 'center',
+    itemHeight: 5,
+    itemWidth: 15,
+    textStyle:{fontSize: 9
+}
+  },
+  grid: {
+        top: '15%',
+    left: '0%',
+    right: '3%',
+    bottom: '0%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value'
+  },
+  yAxis: {
+    type: 'category',
+    data: [   '兰石镇','黄坡镇','塘缀镇','吴阳镇','樟铺镇','振文镇','王村港镇','潭巴镇','长岐镇','潜水镇', '海滨街道','博铺街道', '大山江街道','塘尾街道', '梅菉街道']
+           , axisLabel: {
+            show: true,
+            textStyle: {
+            fontSize: 10
+            }
+        }
+  },
+  series: [
+    {
+      name: '14岁及以下',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: false
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [6854	,
+37258	,
+30594	,
+17092	,
+11080	,
+26049	,
+4599	,
+15148	,
+15492	,
+7264	,
+16232	,
+3970	,
+5684	,
+7577	,
+35661	,
+
+]
+    },
+    {
+      name: '15-30岁',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: false
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [9348	,
+42432	,
+34341	,
+20169	,
+12342	,
+27824	,
+6135	,
+20402	,
+18205	,
+8150	,
+22794	,
+6224	,
+7307	,
+8476	,
+51942	,
+]
+    },
+    {
+      name: '30-60岁',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: false
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [5845	,
+33850	,
+18301	,
+14430	,
+8134	,
+25271	,
+5151	,
+16717	,
+14388	,
+6740	,
+13934	,
+3895	,
+6392	,
+6780	,
+36461	,
+]
+    },
+    {
+      name: '60岁及以上',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: false
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [5444	,
+23338	,
+17766	,
+14021	,
+7011	,
+16799	,
+3904	,
+11495	,
+10647	,
+5015	,
+7024	,
+2289	,
+3452	,
+5421	,
+21431	,
+]
+    },
+    
+  ]
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+    
